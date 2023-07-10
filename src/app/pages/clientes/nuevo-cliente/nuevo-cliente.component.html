@@ -1,1 +1,99 @@
-<p>nuevo-cliente works!</p>
+<h2>Añadir nuevo cliente</h2>
+
+<!-- <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label for="" class="form-label">Nombre:</label>
+    <input type="text" class="form-control" formControlName="nombre" />
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Apellidos:</label>
+    <input type="text" class="form-control" formControlName="apellidos" />
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Email:</label>
+    <input type="text" class="form-control" formControlName="email" />
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Telefono:</label>
+    <input type="text" class="form-control" formControlName="telefono" />
+  </div> -->
+<!-- <div class="mb-3"><label for="" class="form-label">Departamento:</label>
+        <input type="text" class="form-control" formControlName="departamento">
+    </div> -->
+<!-- <div class="mb-3 col-12 col-md-6">
+    <label class="form-label">Departamento</label>
+    <select class="form-select" formControlName="departamento">
+      <option value="direccion">Dirección</option>
+      <option value="diseño">Diseño</option>
+      <option value="recursoshumanos">Recursos humanos</option>
+      <option value="desarrollo">Desarrollo</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="" class="form-label">Salario:</label>
+    <input type="number" class="form-control" formControlName="salario" />
+  </div>
+  <input id="enviar" type="submit" value="Enviar" />
+</form>
+
+<div class="errores">
+  <p *ngFor="let error of errores">
+    {{ error.field }}
+  </p>
+</div> -->
+
+<div class="container">
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="nombre" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Apellidos</label>
+      <input type="text" class="form-control" formControlName="apellidos" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Dirección</label>
+      <input type="text" class="form-control" formControlName="direccion" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="email" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Edad</label>
+      <input type="number" class="form-control" formControlName="edad" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">DNI</label>
+      <input type="text" class="form-control" formControlName="dni" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Género</label>
+      <select class= "form-select"  formControlName="genero" >
+        <option value="M"> Masculino</option>
+        <option value="F"> Femenino</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Cuota</label>
+      <input type="number" class="form-control" formControlName="cuota" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Fecha de Nacimiento</label>
+      <input type="date" class="form-control" formControlName="fecha_nacimiento"
+      />
+    </div>
+
+    <input type="submit" value="Enviar" class="btn btn-info" />
+
+  </form>
+</div>

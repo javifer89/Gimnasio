@@ -1,1 +1,62 @@
-<p>lista-clientes works!</p>
+<h1>Clientes Gimnasio Hércules</h1>
+
+<!-- con CARDS
+
+    <div class="clientes">
+  <div class="card cliente" *ngFor="let cliente of arrClientes">
+    <div class="card-body">
+      <h4 class="card-title">{{ cliente.nombre }} {{ cliente.apellidos }}</h4>
+    <p class="card-title">{{ cliente.id}}</p>
+      <p class="card-text">Direccion: {{ cliente.direccion }}</p>
+      <p class="card-text">Email: {{ cliente.email }}</p>
+      <p class="card-text">Edad: {{ cliente.edad }}</p>
+      <p class="card-text">Genero: {{ cliente.genero }}</p>
+      <p class="card-text">Cuota: {{ cliente.cuota }}</p>
+      <p class="card-text">Fecha_nacimiento: {{ cliente.fecha_nacimiento }}</p>
+      <p class="card-text">
+        Fecha_inscripcion: {{ cliente.fecha_inscripcion }}
+      </p>
+      <p class="card-text">DNI: {{ cliente.dni }}</p>
+      <button class="btn btn-secondary"
+        [routerLink]="['/clientes', 'edit', cliente.id]">
+        Editar Cliente</button>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- con table -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Email</th>
+            <th>Edad</th>
+            <th>Genero</th>
+            <th>Cuota</th>
+            <th>Dni</th>
+            <th>Fecha_nacimiento</th>
+            <th>Fecha_inscripcion</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of arrClientes">
+            <td> {{ cliente.id}}</td>
+            <td> {{ cliente.nombre }} {{ cliente.apellidos }}</td>
+            <td> {{ cliente.direccion }}</td>
+            <td> {{ cliente.email }}</td>
+            <td> {{ cliente.edad }}</td>
+            <td> {{ cliente.genero }}</td>
+            <td> {{ cliente.cuota }}</td>
+            <td> {{ cliente.dni }}</td>
+            <td> {{ cliente.fecha_nacimiento | date: 'dd-MM-YYYY' }}</td>
+            <td> {{ cliente.fecha_inscripcion | date: 'dd-MM-YYYY' }}</td>
+            <td>
+              <button class="btn btn-warning" [routerLink]="['/clientes', 'editar', cliente.id]">Editar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

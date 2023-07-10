@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaClientesComponent } from './pages/clientes/lista-clientes/lista-clientes.component';
@@ -9,6 +9,7 @@ import { EditarClienteComponent } from './pages/clientes/editar-cliente/editar-c
 import { RegistroComponent } from './pages/staff/registro/registro.component';
 import { LoginComponent } from './pages/staff/login/login.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,11 @@ import { MenuComponent } from './components/menu/menu.component';
     EditarClienteComponent,
     RegistroComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+   
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

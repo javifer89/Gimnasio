@@ -7,11 +7,13 @@ import { RegistroComponent } from './pages/staff/registro/registro.component';
 import { LoginComponent } from './pages/staff/login/login.component';
 
 const routes: Routes = [
-  { path: '/clientes', component: ListaClientesComponent },
-  { path: '/clientes/nuevo', component: NuevoClienteComponent },
-  { path: '/clientes/editar/:idcliente', component: EditarClienteComponent },
-  { path: '/registro', component: RegistroComponent },
-  { path: '/login', component: LoginComponent }
+  { path: '', component: ListaClientesComponent},
+  { path: 'clientes', component: ListaClientesComponent },
+  { path: 'clientes/nuevo', component: NuevoClienteComponent },
+  { path: 'clientes/editar/:idcliente', component: EditarClienteComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: '/clientes' },
 ];
 
 @NgModule({
