@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { Cliente } from '../Interfaces/cliente.interface';
 
@@ -24,9 +24,16 @@ export class ClientesService {
     );
   }
 
-  update(clienteId: string, formValue: any) {
+  getById(clienteId: number): Promise<Cliente> {
     return firstValueFrom(
-      this.httpClient.put<Cliente | any>(`${this.baseUrl}/${clienteId}`, formValue)
+      this.httpClient.get<Cliente>(`${this.baseUrl}/${clienteId}`)
+    );
+  }
+
+  update(clienteId: number, formValue: any): Promise<Cliente> | any {
+    return firstValueFrom(
+      this.httpClient.put<Cliente | any>(
+        `${this.baseUrl}/${clienteId}`, formValue)
     );
   }
 

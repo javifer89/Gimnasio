@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClientesService } from 'src/app/services/clientes.service';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'editar-cliente',
@@ -12,7 +13,8 @@ export class EditarClienteComponent {
   clientesService = inject(ClientesService);
   formulario: FormGroup;
   router = inject(Router);
-  clienteId: string;
+  clienteId: number;
+  activatedRoute = inject(ActivatedRoute);
 
   constructor() {
     this.formulario = new FormGroup({
@@ -26,27 +28,39 @@ export class EditarClienteComponent {
       cuota: new FormControl(),
       fecha_nacimiento: new FormControl(),
     });
-    this.clienteId = '';
+    this.clienteId = 0;
   }
 
-  //   ngOnInit() {
-  //     this.activatedRoute.params.subscribe(async (params) => {
-  //       console.log(params['clienteId']); // PARAMS es un objeto que devuelve tantas claves como valores variables tenga la URL
-  //       this.clienteId = params['clienteId'];
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(async (params) => {
+      const cliente = await this.clientesService.getById(params['clienteId']);
+      
+      this.clienteId = params['clienteId'];
 
-  //       const response = await this.empleadosService.getById(params['empleadoId']);
-  //       console.log(response);
-  //     }
-  // }
+      const fechaFormateada = dayjs(cliente.fecha_nacimiento).format('YYYY-MM-DD');
+      const obj = {
+        nombre: cliente.nombre,
+        apellidos: cliente.apellidos,
+        direccion: cliente.direccion,
+        dni: cliente.dni,
+        cuota: cliente.cuota,
+        genero: cliente.genero,
+        fecha_nacimiento: fechaFormateada,
+        email: cliente.email,
+        edad: cliente.edad,
+      };
+      this.formulario.setValue(obj);
+    });
+  }
 
-  //   async onSubmit() {
-  //     const response = await this.clientesService.update(this.formulario.value);
-
-  //     if (response.fatal) {
-  //       console.log(response.fatal);
-  //       return alert('Error en la inserción. Revisa');
-  //     }
-  //     this.router.navigate(['/clientes']);
-  //   }
-  // }
+  async onSubmit() {
+    const response = await this.clientesService.update(
+      this.clienteId,
+      this.formulario.value
+    );
+    if (response.fatal) {
+      return alert('Error en la inserción. Revisa');
+    }
+    this.router.navigate(['/clientes']);
+  }
 }

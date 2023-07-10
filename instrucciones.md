@@ -24,6 +24,18 @@
 - /login -> Login
 
 
+## API Staff
+POST /api/staff/registro
+Permite registrar un usuario del staff (un objeto con el usuario insertado)
+Body: usuario, email, password
+
+POST /api/staff/login
+Permite autenticar un usuario (un objeto con un mensaje de succes y el token)
+Body: email, password
+
+
+
+
 ## Lista de Clientes
 
 - Creo un servicio -> services/Clientes
@@ -44,3 +56,36 @@
 ## Edición del cliente
 
 - Creamos un formulario de tipo MODEL con todos los campos que requiera el cliente
+- En el servicio un método updateById que reciba, el id del cliente y l.os valores del formulario
+- Dentro de ese método lanzamos la petición correspondiente
+- Ejecutamos el método cuando se envíe el formulario -> ¿de donde sacamos el ID del cliente?
+
+## Eliminar cliente
+
+- 
+
+## Registro
+
+- Formulario de registro con los campos necesarios
+- Servicio para Staff
+- Método registro
+
+## Login
+
+- Formulario de login con los campos necesarios
+- Método Login en servicio para staff
+
+
+
+## Cosas que NO voy a hacer
+
+- Redirecciones
+    - Si me registro correctamente, que me lleve al login
+    - Si hago login correctamente, que me lleve a la lista de usuarios
+    - Un botón para poder borrar clientes y la funcionalidad del borrado
+
+## Hay que pensar en..
+- Activar el checktoken en el back
+1. qué pasa en el front cuando usamos el token en el back?
+2. si ha pasado algo, cómo lo solucionamos?
+3. ha cambiado en algo las instrucciones del back (las rutas.pdf)?

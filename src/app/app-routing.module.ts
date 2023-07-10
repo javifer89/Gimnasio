@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: ListaClientesComponent},
   { path: 'clientes', component: ListaClientesComponent },
   { path: 'clientes/nuevo', component: NuevoClienteComponent },
-  { path: 'clientes/editar/:idcliente', component: EditarClienteComponent },
+  { path: 'clientes/editar/:clienteId', component: EditarClienteComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '/clientes' },
